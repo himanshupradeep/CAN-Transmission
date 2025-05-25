@@ -1,0 +1,22 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  message 0x100 msg_rx = {dlc = 4, byte(0) = 0x10, byte(1) = 0x20, byte(2) = 0x30, byte(3) = 0x40};
+  message 0x200 msg_tx = {dlc = 4, byte(0) = 0xAA, byte(1) = 0xBB, byte(2) = 0xCC, byte(3) = 0xDD};
+}
+
+// Here, this script listens for message 0x100 and responds with message 0x200. Simple.
+
+on message 0x100
+{
+  write("Received 0x100: %X %X %X %X", this.byte(0), this.byte(1), this.byte(2), this.byte(3));
+  output(msg_tx);
+  write("Sent 0x200: %X %X %X %X", msg_tx.byte(0), msg_tx.byte(1), msg_tx.byte(2), msg_tx.byte(3));
+}
+
+

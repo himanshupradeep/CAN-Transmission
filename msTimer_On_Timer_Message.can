@@ -11,6 +11,8 @@ variables
   msTimer t1;
 }
 
+//msTimer - used to specify precise timing.
+
 on start
 {
   output(msg);
@@ -19,7 +21,7 @@ on start
 }
 
 //SetTimer - This sets a timer to trigger an event after a specified time. It is useful to control an event. 
-            
+//In this example, it means cyclic message starts 4s after the script starts and transmits one message every 1s.            
 
 on timer t1
 {
@@ -39,6 +41,8 @@ on timer t1
   output(msg);
   write("Simulation Started");
 }*/
+
+
 
 // On Key Event - On pressing a particular key (in this case 'm', message is transmitted.
 /*on key 'm'
