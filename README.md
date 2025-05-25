@@ -154,7 +154,10 @@ Each message is associated with:
 
 ---
 
-# CAN-Transmission using CAPL Browser [Vector CANoe]
+# CAN-Transmission using Network Node [Vector CANoe]
+
+![image](https://github.com/user-attachments/assets/704c5f25-5592-4833-a2fa-5dd78f54437b)
+
 
 This project contains a CAPL script that implements **Advanced Driver Assistance Systems (ADAS)** signals using **SAE J1939** messages. The script defines message objects, dynamically transmits selected signals, and logs the simulation behavior.
 
