@@ -154,6 +154,141 @@ Each message is associated with:
 
 ---
 
+# CAN-Transmission using CAPL Browser [Vector CANoe]
+
+This project contains a CAPL script that implements **Advanced Driver Assistance Systems (ADAS)** signals using **SAE J1939** messages. The script defines message objects, dynamically transmits selected signals, and logs the simulation behavior.
+
+---
+
+##  Project Overview
+
+- **Protocol**: SAE J1939 (29-bit identifier, used in commercial vehicles)
+- **Tool**: Vector CANoe with CAPL scripting
+- **Focus**: Simulating and tracing ADAS message behavior
+- **Use Case**: Testing, validation, or training on J1939-based ADAS communication
+
+---
+
+##  CAPL Scripting Code & Trace Window
+
+**CAPL Browser**
+
+![image](https://github.com/user-attachments/assets/2216e9da-f7b0-4780-a87c-576b62803158)
+
+
+**Trace Window**
+
+![image](https://github.com/user-attachments/assets/c307c1fc-7abf-4eab-bd63-a64827457074)
+
+
+
+---
+
+##  List of ADAS Messages & Details
+
+| #  | Message Name                     | PGN     | DLC | Data Bytes                 |
+|----|----------------------------------|---------|-----|----------------------------|
+| 1  | Lane Departure Warning           | 65265   | 8   | AA BB CC DD EE             |
+| 2  | Adaptive Cruise Control Set Speed| 65217   | 4   | 10 20 30 40                |
+| 3  | Collision Mitigation Braking     | 65266   | 6   | 15 25 35 45 55 65          |
+| 4  | Blind Spot Detection             | 65269   | 3   | 5A 6B 7C                   |
+| 5  | Automatic Emergency Braking      | 65267   | 7   | 40 50 60 70 80 90 A0       |
+| 6  | Traffic Sign Recognition         | 65270   | 5   | 11 22 33 44 55             |
+| 7  | Driver Drowsiness Detection      | 65271   | 8   | 77 88 99 AA BB CC DD EE    |
+| 8  | Pedestrian Detection             | 65272   | 4   | 55 66 77 88                |
+| 9  | Lane Keep Assist                 | 65273   | 6   | 31 42 53 64 75 86          |
+| 10 | Headway Monitoring               | 65274   | 3   | 80 90 A0                   |
+| 11 | Adaptive Headlight Control       | 65275   | 7   | 14 24 34 44 54 64 74       |
+| 12 | Automatic Parking Assist         | 65276   | 5   | 20 30 40 50 60             |
+| 13 | Vehicle Stability Control        | 65277   | 8   | B1 C2 D3 E4 F5 A6 B7 C8    |
+| 14 | Rear Cross Traffic Alert         | 65278   | 4   | 10 21 32 43                |
+| 15 | Road Condition Monitoring        | 65279   | 6   | 73 84 95 A6 B7 C8          |
+
+---
+
+##  Implementation Details
+
+- **J1939 Protocol**: Widely adopted in commercial vehicles for robust, high-speed communication.
+- **DLC Variation**: Each message uses a different DLC to match real-world signal structure.
+- **CAPL Logic**: Messages are initialized and output using CAPL logic triggered at simulation start.
+
+---
+
+##  Usage Instructions
+
+1. Import the CAPL script into your **Vector CANoe** environment.
+2. Run the simulation.
+3. Observe the ADAS message transmissions and signal behavior in the **Trace window**.
+4. Modify or extend the message payloads for your use case.
+
+---
+
+##  Message Descriptions & DLC Breakdown
+
+Each ADAS feature is designed with a specific DLC to reflect real data requirements:
+
+### 1. **Lane Departure Warning** (PGN 65265, DLC = 8)
+> Warns the driver when drifting from the lane.
+- **Why 8?** Lane angle, deviation level, alert severity.
+
+### 2. **Adaptive Cruise Control Set Speed** (PGN 65217, DLC = 4)
+> Maintains target speed and adjusts based on traffic.
+- **Why 4?** Speed, acceleration, mode status.
+
+### 3. **Collision Mitigation Braking** (PGN 65266, DLC = 6)
+> Applies brakes automatically to avoid collisions.
+- **Why 6?** Distance to object, brake force, delay time.
+
+### 4. **Blind Spot Detection** (PGN 65269, DLC = 3)
+> Warns of vehicles in the blind spot.
+- **Why 3?** Sensor state and object location.
+
+### 5. **Automatic Emergency Braking** (PGN 65267, DLC = 7)
+> Full braking in imminent crash scenarios.
+- **Why 7?** Braking level, system status, proximity data.
+
+### 6. **Traffic Sign Recognition** (PGN 65270, DLC = 5)
+> Displays detected road signs.
+- **Why 5?** Sign type, location, relevance.
+
+### 7. **Driver Drowsiness Detection** (PGN 65271, DLC = 8)
+> Detects driver fatigue.
+- **Why 8?** Eye tracking, head nods, reaction time.
+
+### 8. **Pedestrian Detection** (PGN 65272, DLC = 4)
+> Detects pedestrians in vehicle path.
+- **Why 4?** Position, urgency level.
+
+### 9. **Lane Keep Assist** (PGN 65273, DLC = 6)
+> Steers to keep vehicle centered.
+- **Why 6?** Lane edges, torque, curvature.
+
+### 10. **Headway Monitoring** (PGN 65274, DLC = 3)
+> Maintains safe distance from the vehicle ahead.
+- **Why 3?** Gap, time-to-collision.
+
+### 11. **Adaptive Headlight Control** (PGN 65275, DLC = 7)
+> Adjusts headlight brightness/direction.
+- **Why 7?** Angle, brightness, adaptive mode.
+
+### 12. **Automatic Parking Assist** (PGN 65276, DLC = 5)
+> Helps vehicle park itself.
+- **Why 5?** Slot size, steering plan.
+
+### 13. **Vehicle Stability Control** (PGN 65277, DLC = 8)
+> Maintains grip and traction.
+- **Why 8?** Wheel slip, yaw, ABS status.
+
+### 14. **Rear Cross Traffic Alert** (PGN 65278, DLC = 4)
+> Detects side traffic while reversing.
+- **Why 4?** Direction, threat level.
+
+### 15. **Road Condition Monitoring** (PGN 65279, DLC = 6)
+> Detects road grip and slipperiness.
+- **Why 6?** Surface type, stability metrics.
+
+---
+
 ## Final Summary
 
 This project provides a clear beginner-friendly demonstration of transmitting real-world ADAS messages over CAN with accurate timing and data formatting. It introduces:
