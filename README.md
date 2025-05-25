@@ -292,6 +292,56 @@ Each ADAS feature is designed with a specific DLC to reflect real data requireme
 
 ---
 
+## CAPL Event Examples
+
+In this section, I tried to explain four basic CAPL events with simple use cases and screenshots.
+
+---
+
+### 1. `on key`
+
+- Triggered when a specific keyboard key is pressed during simulation.  
+- Useful for manual testing and controlling outputs interactively.  
+- Often used to start/stop actions or send test messages.  
+
+![Screenshot 2025-05-25 202155](https://github.com/user-attachments/assets/88d49445-e723-4927-bd11-828efae51642)
+
+
+---
+
+### 2. `on start`
+
+- Runs once automatically when the simulation starts.  
+- Ideal for initializing messages, timers, or logging start info.  
+- Often used to send an initial CAN message.  
+
+![Screenshot 2025-05-25 201941](https://github.com/user-attachments/assets/cb4bea49-3894-4501-aa2e-60c4e51ab9e1)
+
+
+---
+
+### 3. `on timer`
+
+- Triggered after a timer is set using `setTimer()`.  
+- Useful for sending periodic messages or delays.  
+- Allows time-based control over actions.  
+
+![Screenshot 2025-05-25 204710](https://github.com/user-attachments/assets/08a268cc-1d2f-4e6d-ba71-d4351faa8bb8)
+
+
+---
+
+### 4. `on message`
+
+- Triggered when a specific CAN message is received.  
+- Used to process incoming data or trigger other actions.  
+- Helps in monitoring and reacting to network traffic.  
+
+![image](https://github.com/user-attachments/assets/7a03af06-c54f-45c4-848c-07e0ac5644fb)
+
+
+---
+
 ## Final Summary
 
 This project provides a clear beginner-friendly demonstration of transmitting real-world ADAS messages over CAN with accurate timing and data formatting. It introduces:
